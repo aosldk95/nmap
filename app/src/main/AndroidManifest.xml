@@ -10,10 +10,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <meta-data
+            android:name="com.naver.maps.map.CLIENT_ID"
+            android:value="v9t90vt1aj" />
         <activity android:name=".MainActivity">
-            <meta-data
-                android:name="com.naver.maps.map.CLIENT_ID"
-                android:value="YOUR_CLIENT_ID_HERE" />
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
