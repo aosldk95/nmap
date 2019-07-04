@@ -19,7 +19,9 @@ package com.kba.nmap;
         import com.naver.maps.map.overlay.InfoWindow;
         import com.naver.maps.map.overlay.Marker;
 
+        import java.util.ArrayList;
         import java.util.Arrays;
+        import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements OnMapReadyCallback {
 
@@ -40,33 +42,30 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     @UiThread
     @Override
     public void onMapReady(@NonNull NaverMap naverMap) {
+        List listA = new ArrayList();
+        listA.add(new LatLng(35.94528, 126.682167));
+        listA.add(new LatLng(35.983, 126.717));
+        listA.add(new LatLng(35.969389, 126.957333));
+        listA.add(new LatLng(35.846833, 127.129361));
         LatLngBounds bounds = new LatLngBounds.Builder()
-                .include(new LatLng(35.94528, 126.682167))
-                .include(new LatLng(35.969389, 126.957333))
-                .include(new LatLng(35.983, 126.717))
-                .include(new LatLng(35.846833, 127.129361))
+                .include(listA)
                 .build();
         CameraUpdate cameraUpdate = CameraUpdate.fitBounds(bounds,200);
         naverMap.moveCamera(cameraUpdate);
         Marker marker = new Marker();
-        marker.setPosition(new LatLng(35.94528, 126.682167));
+        marker.setPosition((LatLng) listA.get(0));
         marker.setMap(naverMap);
         Marker marker1 = new Marker();
-        marker1.setPosition(new LatLng(35.969389, 126.957333));
+        marker1.setPosition((LatLng) listA.get(1));
         marker1.setMap(naverMap);
         Marker marker2 = new Marker();
-        marker2.setPosition(new LatLng(35.983, 126.717));
+        marker2.setPosition((LatLng) listA.get(2));
         marker2.setMap(naverMap);
         Marker marker3 = new Marker();
-        marker3.setPosition(new LatLng(35.846833, 127.129361));
+        marker3.setPosition((LatLng) listA.get(3));
         marker3.setMap(naverMap);
         ArrowheadPathOverlay arrowheadPath = new ArrowheadPathOverlay();
-        arrowheadPath.setCoords(Arrays.asList(
-                new LatLng(35.94528, 126.682167),
-                new LatLng(35.983, 126.717),
-                new LatLng(35.969389, 126.957333),
-                new LatLng(35.846833, 127.129361)
-        ));
+        arrowheadPath.setCoords(listA);
         Context context = this;
         arrowheadPath.setMap(naverMap);
         InfoWindow infoWindow = new InfoWindow();
