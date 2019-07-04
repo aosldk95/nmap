@@ -1,22 +1,23 @@
 package com.kba.nmap;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.UiThread;
-import androidx.appcompat.app.AppCompatActivity;
+        import androidx.annotation.NonNull;
+        import androidx.annotation.UiThread;
+        import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
-import android.os.Bundle;
+        import android.content.Context;
+        import android.os.Bundle;
+        import android.widget.Toast;
 
-import com.naver.maps.geometry.LatLng;
-import com.naver.maps.map.CameraPosition;
-import com.naver.maps.map.MapFragment;
-import com.naver.maps.map.NaverMap;
-import com.naver.maps.map.OnMapReadyCallback;
-import com.naver.maps.map.overlay.ArrowheadPathOverlay;
-import com.naver.maps.map.overlay.InfoWindow;
-import com.naver.maps.map.overlay.Marker;
+        import com.naver.maps.geometry.LatLng;
+        import com.naver.maps.map.CameraPosition;
+        import com.naver.maps.map.MapFragment;
+        import com.naver.maps.map.NaverMap;
+        import com.naver.maps.map.OnMapReadyCallback;
+        import com.naver.maps.map.overlay.ArrowheadPathOverlay;
+        import com.naver.maps.map.overlay.InfoWindow;
+        import com.naver.maps.map.overlay.Marker;
 
-import java.util.Arrays;
+        import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity implements OnMapReadyCallback {
 
@@ -97,7 +98,10 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         infoWindow1.open(marker1);
         infoWindow2.open(marker2);
         infoWindow3.open(marker3);
-        
+        naverMap.setOnMapLongClickListener((point, coord) ->
+                Toast.makeText(this, coord.latitude + ", " + coord.longitude,
+                        Toast.LENGTH_SHORT).show());
+
 
     }
 
