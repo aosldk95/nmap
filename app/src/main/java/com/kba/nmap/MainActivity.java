@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             @NonNull
             @Override
             public CharSequence getText(@NonNull InfoWindow infoWindow) {
-                return "원광대";
+                return "군산시청";
             }
         });
         InfoWindow infoWindow2 = new InfoWindow();
@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             @NonNull
             @Override
             public CharSequence getText(@NonNull InfoWindow infoWindow) {
-                return "군산시청";
+                return "원광대";
             }
         });
         InfoWindow infoWindow3 = new InfoWindow();
