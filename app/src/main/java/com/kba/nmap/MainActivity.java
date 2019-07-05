@@ -6,6 +6,8 @@ package com.kba.nmap;
 
         import android.content.Context;
         import android.os.Bundle;
+        import android.view.View;
+        import android.widget.Button;
         import android.widget.Toast;
 
         import com.naver.maps.geometry.LatLng;
@@ -15,6 +17,7 @@ package com.kba.nmap;
         import com.naver.maps.map.MapFragment;
         import com.naver.maps.map.NaverMap;
         import com.naver.maps.map.OnMapReadyCallback;
+        import com.naver.maps.map.UiSettings;
         import com.naver.maps.map.overlay.ArrowheadPathOverlay;
         import com.naver.maps.map.overlay.InfoWindow;
         import com.naver.maps.map.overlay.Marker;
@@ -23,12 +26,15 @@ package com.kba.nmap;
         import java.util.Arrays;
         import java.util.List;
 
+        import static com.naver.maps.map.NaverMap.LAYER_GROUP_BUILDING;
+
 public class MainActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         MapFragment mapFragment = (MapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         if (mapFragment == null) {
             mapFragment = MapFragment.newInstance();
@@ -52,6 +58,10 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                 .build();
         CameraUpdate cameraUpdate = CameraUpdate.fitBounds(bounds,200);
         naverMap.moveCamera(cameraUpdate);
+        List markers = new ArrayList();
+        List windows = new ArrayList();
+        List texts = new ArrayList();
+
         Marker marker = new Marker();
         marker.setPosition((LatLng) listA.get(0));
         marker.setMap(naverMap);
@@ -107,7 +117,44 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         naverMap.setOnMapLongClickListener((point, coord) ->
                 Toast.makeText(this, coord.latitude + ", " + coord.longitude,
                         Toast.LENGTH_SHORT).show());
+        UiSettings uiSettings = naverMap.getUiSettings();
+        naverMap.setMapType(NaverMap.MapType.Hybrid);
+        Button btn = findViewById(R.id.button);
+        btn.setOnClickListener(new View.OnClickListener() {
+            int count = 1;
 
+            @Override
+
+            public void onClick(View view) {
+                if (count % 2 == 1) {
+                    marker.setMap(null);
+                    marker1.setMap(null);
+                    marker2.setMap(null);
+                    marker3.setMap(null);
+                    infoWindow.close();
+                    infoWindow1.close();
+                    infoWindow2.close();
+                    infoWindow3.close();
+                    arrowheadPath.setMap(null);
+                    count += 1;
+                }
+                else {
+                    marker.setMap(naverMap);
+                    marker1.setMap(naverMap);
+                    marker2.setMap(naverMap);
+                    marker3.setMap(naverMap);
+                    infoWindow.open(marker);
+                    infoWindow1.open(marker1);
+                    infoWindow2.open(marker2);
+                    infoWindow3.open(marker3);
+                    arrowheadPath.setMap(naverMap);
+                    count += 1;
+
+                }
+            }
+
+
+        });
 
     }
 
