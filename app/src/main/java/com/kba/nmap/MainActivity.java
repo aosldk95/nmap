@@ -119,6 +119,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                         Toast.LENGTH_SHORT).show());
         UiSettings uiSettings = naverMap.getUiSettings();
         naverMap.setMapType(NaverMap.MapType.Hybrid);
+
         Button btn = findViewById(R.id.button);
         btn.setOnClickListener(new View.OnClickListener() {
             int count = 1;
@@ -153,6 +154,46 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                 }
             }
 
+
+        });
+        Button btn1 = findViewById(R.id.button1);
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                naverMap.setMapType(NaverMap.MapType.Basic);
+            }
+
+        });
+        Button btn2 = findViewById(R.id.button2);
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                naverMap.setMapType(NaverMap.MapType.Navi);
+            }
+
+        });
+        Button btn3 = findViewById(R.id.button3);
+        btn3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                naverMap.setMapType(NaverMap.MapType.Satellite);
+            }
+
+        });
+        Button btn4 = findViewById(R.id.button4);
+        btn4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                naverMap.setMapType(NaverMap.MapType.Hybrid);
+            }
+
+        });
+        Button btn5 = findViewById(R.id.button5);
+        btn5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                naverMap.setMapType(NaverMap.MapType.Terrain);
+            }
 
         });
 
